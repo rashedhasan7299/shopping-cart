@@ -9,7 +9,7 @@ for (let i = 0; i < price.length; i++) {
     currentPrice.push(priceValue);    
 }
 
-for (let i = 0; i <= inputGroups.length; i++) {
+for (let i = 0; i < inputGroups.length; i++) {
 
     //Increment Counter
     inputGroups[i].addEventListener('click', function(event) {
