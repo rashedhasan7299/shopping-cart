@@ -29,7 +29,18 @@ for (let i = 0; i <= inputGroups.length; i++) {
         let productPrice = getIndividualPrice(i);
         price[i].innerText = productPrice;
 
-        // subTotal(i);
+
+        //Set Subtotal in DOM
+        let subTotalAmount = subTotal();
+        document.getElementById("subTotal").innerText = subTotalAmount;
+
+        //Set Tax in DOM
+        let taxApplied = taxAmount(subTotalAmount);
+        document.getElementById("tax").innerText = taxApplied;
+
+        let fullPayable = subTotalAmount + taxApplied;
+        document.getElementById("total").innerText = fullPayable;
+
     });   
 }
 //Get Individual Total for a product
@@ -39,4 +50,17 @@ function getIndividualPrice(i) {
     productNumber = inputAreas[i].value;
     individualPrice = currentProductPrice * productNumber;
     return individualPrice;
+}
+
+function subTotal() {
+    let subSum = 0;
+    for (let i = 0; i < price.length; i++) {
+        subSum = subSum + parseInt(price[i].innerText);       
+    }
+    return subSum;
+}
+
+function taxAmount(amount) {
+    let taxPayable = amount * 0.15;
+    return taxPayable;
 }
